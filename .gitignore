@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Training Data
+data/
+
+# Training Results
+learning_results/
+
+# Node.js
+node_modules/
+.next/
+
+# Logs
+*.log
+
+# Environment Variables
+.env
+
+# OS
+.DS_Store
+Thumbs.db

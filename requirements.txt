@@ -1,0 +1,19 @@
+# Deep Learning
+tensorflow==2.20.0
+keras==3.13.1
+
+# API
+fastapi==0.120.4
+uvicorn==0.38.0
+python-multipart==0.0.22
+
+# Data Processing
+numpy==2.4.1
+pillow==12.1.0
+scikit-learn==1.8.0
+
+# Visualization
+matplotlib==3.10.8
+
+# Validation
+pydantic==2.12.3
