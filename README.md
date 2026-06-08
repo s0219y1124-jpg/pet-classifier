@@ -41,7 +41,7 @@ Webアプリとして実装したいと考え制作しました。
 対応している動物の種類や、
 シンプルで使いやすいUIを意識して設計しました。
 
-![トップ画面](image.png)
+![トップ画面](docs/image.png)
 
 ### 判定結果画面
 
@@ -50,7 +50,7 @@ AIによる分類結果と各クラスのスコアを表示します。
 判定結果を直感的に確認できるよう、
 スコアバー形式で可視化しています。
 
-![判定結果](image-1.png)
+![判定結果](docs/image-1.png)
 
 ---
 
@@ -158,7 +158,7 @@ AIによる分類結果と各クラスのスコアを表示します。
 - EfficientNetB0
 
 ### 訓練精度と検証精度
-![訓練精度と検証精度](accuracy.png)
+![訓練精度と検証精度](docs/accuracy.png)
 
 ### テスト精度
 
@@ -174,9 +174,9 @@ AIによる分類結果と各クラスのスコアを表示します。
 
 ### confidence分布
 
-![正解データ](correct_data.png)
-![誤分類データ](incorrect_data.png)
-![その他データ](other_data.png)
+![正解データ](docs/correct_data.png)
+![誤分類データ](docs/incorrect_data.png)
+![その他データ](docs/other_data.png)
 
 ### モデルの選定理由
 
@@ -249,9 +249,9 @@ EfficientNetB0を採用しました。
 学習時間：24分13.72秒
 
 各ヒストグラム
-![MobileNetV3Largeの正解データ](correct_data-1.png)
-![MobileNetV3Largeの誤分類データ](incorrect_data-1.png)
-![MobileNetV3Largeのその他データ](other_data-1.png)
+![MobileNetV3Largeの正解データ](docs/correct_data-1.png)
+![MobileNetV3Largeの誤分類データ](docs/incorrect_data-1.png)
+![MobileNetV3Largeのその他データ](docs/other_data-1.png)
 
 #### EfficientNetB1
 
@@ -266,9 +266,9 @@ EfficientNetB0を採用しました。
 学習時間：58分40.37秒
 
 各ヒストグラム
-![EfficientNetB1の正解データ](correct_data-2.png)
-![EfficientNetB1の誤分類データ](incorrect_data-2.png)
-![EfficientNetB1のその他データ](other_data-2.png)
+![EfficientNetB1の正解データ](docs/correct_data-2.png)
+![EfficientNetB1の誤分類データ](docs/incorrect_data-2.png)
+![EfficientNetB1のその他データ](docs/other_data-2.png)
 
 ## 工夫した点
 
