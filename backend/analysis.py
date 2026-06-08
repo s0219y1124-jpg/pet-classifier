@@ -1,5 +1,4 @@
 from keras.utils import image_dataset_from_directory
-from keras.applications.mobilenet_v3 import preprocess_input
 from sklearn.metrics import confusion_matrix
 import numpy as np
 import os
@@ -22,8 +21,24 @@ def create_testdatas(
         shuffle=False
     )
     
-    test_ds = test_ds.map(lambda x, y: (preprocess_input(x), y))
+    """
+    テストデータの正規化
+    MobileNet系統を使う場合は正規化が必要だが
+    EfficientNet系統を使う場合は不要
+    """
     
+    MODEL_TYPE = "efficientnet"
+
+    if MODEL_TYPE == "mobilenet":
+        from keras.applications.mobilenet_v3 import preprocess_input
+        USE_PREPROCESS_INPUT = True
+
+    elif MODEL_TYPE == "efficientnet":
+        USE_PREPROCESS_INPUT = False
+        
+    if USE_PREPROCESS_INPUT:
+        test_ds = test_ds.map(lambda x, y: (preprocess_input(x), y))
+
     return test_ds
 
 #混合行列を用いて4種のテストデータを分析する関数

@@ -97,10 +97,10 @@ def main():
         batch_size=32,            # バッチサイズ
     )
     
-    # 学習結果の評価
+    # テストデータ推論結果の評価
     test_loss, test_acc = model.evaluate(test_ds)
-    print(f'検証データに対する精度: {test_acc:.2f}')
-    print(f'検証データに対する損失: {test_loss:.2f}')
+    print(f'テストデータに対する精度: {test_acc:.2f}')
+    print(f'テストデータに対する損失: {test_loss:.2f}')
     
     #テストデータを混合行列で分析
     confusion_analysis(test_ds, model)

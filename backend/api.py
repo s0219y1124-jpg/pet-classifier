@@ -1,7 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel
 from keras.models import load_model
-from keras.applications.mobilenet_v3 import preprocess_input
 import numpy as np
 import tensorflow as tf
 from PIL import Image
@@ -49,6 +48,9 @@ except Exception as e:
 #クラス名の準備
 CLASS_NAMES = ['うさぎ', 'ねずみ', '犬', '猫']
 
+#使用モデル
+MODEL_TYPE = "efficientnet"
+
 #レスポンスの型を指定
 class PredictionResponse(BaseModel):
     success: bool
@@ -65,10 +67,24 @@ def predict_image(img_array: np.ndarray):
 
     # 中央224x224切り抜き
     img_array = tf.image.central_crop(img_array, 224/256)
+    
+    """
+    モデルデータ用に正規化
+    MobileNet系統を使う場合は正規化が必要だが
+    EfficientNet系統を使う場合は不要
+    """
 
-    #モデル用に正規化
-    processed = preprocess_input(img_array)
-    img_tensor = np.expand_dims(processed, axis=0)
+    if MODEL_TYPE == "mobilenet":
+        from keras.applications.mobilenet_v3 import preprocess_input
+        USE_PREPROCESS_INPUT = True
+
+    elif MODEL_TYPE == "efficientnet":
+        USE_PREPROCESS_INPUT = False
+
+    if USE_PREPROCESS_INPUT:
+        img_array = preprocess_input(img_array)
+
+    img_tensor = np.expand_dims(img_array, axis=0)
 
     #モデルを予測
     prediction = model.predict(img_tensor, verbose=0)

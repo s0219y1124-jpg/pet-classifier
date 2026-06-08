@@ -1,14 +1,16 @@
 import tensorflow as tf
 from keras import layers, models
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
-from keras.applications import MobileNetV3Large
-from keras.applications.mobilenet_v3 import preprocess_input
+from keras.applications import EfficientNetB0
 from keras.optimizers import Adam
+
+#使用モデル
+MODEL_TYPE = "efficientnet"
 
 # ベースモデルを立ち上げる
 def build_base_model() -> tf.keras.Model:
     # ImageNet学習済みモデルを特徴抽出器として利用
-    base_model = MobileNetV3Large(weights='imagenet', include_top=False)
+    base_model = EfficientNetB0(weights='imagenet', include_top=False)
     # 転移学習の初期段階では重みを固定
     base_model.trainable = False
     return base_model
@@ -27,16 +29,29 @@ def create_mobilenet_model(data_augmentation,base_model,train_ds, val_ds, class_
         layers.Dense(len(class_names), activation='softmax') # 出力層（4択の動物） 
     ])
     
-    #学習データと検証データの正規化
-    train_ds = train_ds.map(
-        lambda x, y: (preprocess_input(x), y),
-        num_parallel_calls=tf.data.AUTOTUNE
-    )
+    """
+    学習データと検証データの正規化
+    MobileNet系統を使う場合は正規化が必要だが
+    EfficientNet系統を使う場合は不要
+    """
 
-    val_ds = val_ds.map(
-        lambda x, y: (preprocess_input(x), y),
-        num_parallel_calls=tf.data.AUTOTUNE
-    )
+    if MODEL_TYPE == "mobilenet":
+        from keras.applications.mobilenet_v3 import preprocess_input
+        USE_PREPROCESS_INPUT = True
+
+    elif MODEL_TYPE == "efficientnet":
+        USE_PREPROCESS_INPUT = False
+
+    if USE_PREPROCESS_INPUT:
+        train_ds = train_ds.map(
+            lambda x, y: (preprocess_input(x), y),
+            num_parallel_calls=tf.data.AUTOTUNE
+        )
+
+        val_ds = val_ds.map(
+            lambda x, y: (preprocess_input(x), y),
+            num_parallel_calls=tf.data.AUTOTUNE
+        )
     
     train_ds = train_ds.prefetch(tf.data.AUTOTUNE)
     val_ds = val_ds.prefetch(tf.data.AUTOTUNE)
