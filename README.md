@@ -174,9 +174,19 @@ AIによる分類結果と各クラスのスコアを表示します。
 
 ### confidence分布
 
-![正解データ](docs/correct_data.png)
-![誤分類データ](docs/incorrect_data.png)
-![その他データ](docs/other_data.png)
+<table>
+<tr>
+<td align="center"><b>正解データ</b></td>
+<td align="center"><b>誤分類データ</b></td>
+<td align="center"><b>その他データ</b></td>
+</tr>
+
+<tr>
+<td><img src="docs/correct_data.png"></td>
+<td><img src="docs/incorrect_data.png"></td>
+<td><img src="docs/other_data.png"></td>
+</tr>
+</table>
 
 ### モデルの選定理由
 
@@ -248,10 +258,19 @@ EfficientNetB0を採用しました。
 
 学習時間：24分13.72秒
 
-各ヒストグラム
-![MobileNetV3Largeの正解データ](docs/correct_data-1.png)
-![MobileNetV3Largeの誤分類データ](docs/incorrect_data-1.png)
-![MobileNetV3Largeのその他データ](docs/other_data-1.png)
+<table>
+<tr>
+<td align="center"><b>正解データ</b></td>
+<td align="center"><b>誤分類データ</b></td>
+<td align="center"><b>その他データ</b></td>
+</tr>
+
+<tr>
+<td><img src="docs/correct_data-1.png"></td>
+<td><img src="docs/incorrect_data-1.png"></td>
+<td><img src="docs/other_data-1.png"></td>
+</tr>
+</table>
 
 #### EfficientNetB1
 
@@ -265,10 +284,19 @@ EfficientNetB0を採用しました。
 
 学習時間：58分40.37秒
 
-各ヒストグラム
-![EfficientNetB1の正解データ](docs/correct_data-2.png)
-![EfficientNetB1の誤分類データ](docs/incorrect_data-2.png)
-![EfficientNetB1のその他データ](docs/other_data-2.png)
+<table>
+<tr>
+<td align="center"><b>正解データ</b></td>
+<td align="center"><b>誤分類データ</b></td>
+<td align="center"><b>その他データ</b></td>
+</tr>
+
+<tr>
+<td><img src="docs/correct_data-2.png"></td>
+<td><img src="docs/incorrect_data-2.png"></td>
+<td><img src="docs/other_data-2.png"></td>
+</tr>
+</table>
 
 ## 工夫した点
 
